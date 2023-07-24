@@ -25,6 +25,11 @@ declare namespace solc {
   ): string;
 
   function compile(source: string | object): string;
+
+  function loadRemoteVersion(
+    version: string,
+    callback?: (error: Error, solc: solc) => void
+  ): Promise<solc>;
 }
 
 export = solc;
