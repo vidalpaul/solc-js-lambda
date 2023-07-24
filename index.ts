@@ -34,7 +34,9 @@ export const handler: Handler<Request, Response> = async (event) => {
     },
   };
 
-  const output = JSON.parse(solc.compile(JSON.stringify(input)));
+  const compiler = await solc.loadRemoteVersion(solcVersion);
+
+  const output = JSON.parse(compiler.compile(JSON.stringify(input)));
 
   if (output.errors) {
     return {
